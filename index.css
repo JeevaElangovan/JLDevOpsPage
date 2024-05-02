@@ -1221,7 +1221,7 @@ text-align: left;
         }
     }
  
-    @media (max-width:320px){
+    @media (max-width:375px){
       .our-case-studies-btn{
         margin-top: -500px !important;
       }
