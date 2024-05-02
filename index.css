@@ -21,10 +21,7 @@
   
 /* ----NavBar--- */
 
-p{
-  color: #676968;
 
-}
 
 
 .navbar_button {
@@ -1008,7 +1005,7 @@ text-align: left;
   }
   .active-industry {
     background: #2CA068;
-    color: #ffffff; 
+   color: #ffffff;
     font-weight: 600;
     
   }
@@ -1223,7 +1220,7 @@ text-align: left;
  
     @media (max-width:375px){
       .our-case-studies-btn{
-        margin-top: -500px !important;
+        margin-top: -440px !important;
       }
       .our-case-btn2 button{
         margin-left: -40px !important;
