@@ -1057,11 +1057,11 @@ text-align: left;
 
   @media (max-width:375px){
     .industry-responsive-header h1{
-      font-size: 28px !important;
-      width: 70%;
+      /* font-size: 30px !important; */
+      width: 80%;
     }
     .industry-responsive-header h1::after{
-      margin-top: 35px !important;
+      margin-top: 30px !important;
     }
   }
 
@@ -1223,7 +1223,10 @@ text-align: left;
  
     @media (max-width:320px){
       .our-case-studies-btn{
-        margin-top: -480px !important;
+        margin-top: -500px !important;
+      }
+      .our-case-btn2 button{
+        margin-left: -40px !important;
       }
     }
 
