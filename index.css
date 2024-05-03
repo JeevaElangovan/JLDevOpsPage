@@ -114,14 +114,31 @@ text-align: left;
 
   /* ---Section - 1 DevOps Services */
 
+  .devops-services-bgimage{
+    background-image: url("Devops/Hero\ Section-\ devOps.png");
+    background-size: cover;
+    height: 705px;
+    margin-top: -40px;
+  }
+  .devops-services{
+    margin-top: 100px;
+  }
+
   .devops-services-part1 h1{
-    margin-top: 70px;
+    margin-top: 170px;
     margin-bottom:30px;
 
 }
 
   .devops-services-part1 p{
     font-size: 14px;
+  }
+  .devops-services-part2 img{
+    margin-top: 80px;
+    margin-left: 30px;
+    height: 572px;
+    /* width: 900px !important; */
+    
   }
 
 
@@ -146,6 +163,9 @@ text-align: left;
 
   }
   @media (max-width:425px){
+    .devops-services{
+      margin-top: -80px !important;
+    }
 
     .devops-services-part1 h1{
         display: flex;
@@ -164,6 +184,12 @@ text-align: left;
     }
     .devops-services-part2 img{
         margin-top: 30px;
+        height: auto;
+        width: auto;
+        margin-left: 0px;
+    }
+    .devops-services-bgimage{
+      background-image: none;
     }
   }
 
@@ -175,7 +201,7 @@ text-align: left;
 
 
  .devops-consulting-services{
-    margin-top:150px !important;
+    margin-top:100px !important;
   }
 
   .consulting-heading {
@@ -296,7 +322,7 @@ text-align: left;
 
     .consulting-responsve-header h1{
         position: relative;
-        margin-top: 50px;
+        margin-top: 250px;
         font-size: xx-large;
     }
 
