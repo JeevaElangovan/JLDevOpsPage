@@ -72,27 +72,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //  Section - 2 Responsive
 
-document.addEventListener('DOMContentLoaded', function() {
-    const accordionHeaders = document.querySelectorAll('.accordion-header');
+// document.addEventListener('DOMContentLoaded', function() {
+//     const accordionHeaders = document.querySelectorAll('.accordion-header');
   
-    accordionHeaders.forEach(header => {
-        header.addEventListener('click', function() {
-            const accordionItem = this.parentElement;
-            const accordionContent = accordionItem.querySelector('.accordion-content');
-            const accordionToggle = accordionItem.querySelector('.accordion-toggle').querySelector('.arrow');
+//     accordionHeaders.forEach(header => {
+//         header.addEventListener('click', function() {
+//             const accordionItem = this.parentElement;
+//             const accordionContent = accordionItem.querySelector('.accordion-content');
+//             const accordionToggle = accordionItem.querySelector('.accordion-toggle').querySelector('.arrow');
   
-            if (accordionContent.style.display === 'block') {
-                accordionContent.style.display = 'none';
-                accordionToggle.classList.remove('up');
-                accordionToggle.classList.add('down');
-            } else {
-                accordionContent.style.display = 'block';
-                accordionToggle.classList.remove('down');
-                accordionToggle.classList.add('up');
-            }
-        });
-    });
-  });
+//             if (accordionContent.style.display === 'block') {
+//                 accordionContent.style.display = 'none';
+//                 accordionToggle.classList.remove('up');
+//                 accordionToggle.classList.add('down');
+//             } else {
+//                 accordionContent.style.display = 'block';
+//                 accordionToggle.classList.remove('down');
+//                 accordionToggle.classList.add('up');
+//             }
+//         });
+//     });
+//   });
   
 
 
@@ -213,54 +213,7 @@ $(document).ready(function() {
 
 
 // section - 9 Our testimonials
-
-
-// let slideIndex = 1;
-// showSlides(slideIndex);
-
-// function moveCarousel(n) {
-//     showSlides(slideIndex = n);
-// }
-
-// function showSlides(n) {
-//     let i;
-//     const slides = document.getElementsByClassName("our-testimonials-section9");
-//     const buttons = document.querySelectorAll('.our-testimonials-btn button');
-    
-//     if (n > slides.length) { slideIndex = 1 }
-//     if (n < 1) { slideIndex = slides.length }
-//     for (i = 0; i < slides.length; i++) {
-//         slides[i].style.display = "none";
-//     }
-//     for (i = 0; i < buttons.length; i++) {
-//         buttons[i].classList.remove('active-btn');
-//     }
-//     slides[slideIndex - 1].style.display = "block";
-//     buttons[slideIndex - 1].classList.add('active-btn');
-// }
-
-// // Automatic slideshow
-// let slideInterval = setInterval(automaticSlide, 2000); // Change 5000 to desired interval in milliseconds
-
-// function automaticSlide() {
-//     moveCarousel(slideIndex + 1);
-// }
-
-// // Resume automatic slideshow on mouse leave
-// carouselContainer.addEventListener('mouseleave', function () {
-//     slideInterval = setInterval(automaticSlide, 2000); // Change 5000 to desired interval in milliseconds
-// });
-
-// // Clicking on a button to move carousel
-// const carouselButtons = document.querySelectorAll('.our-testimonials-btn button');
-// carouselButtons.forEach((button, index) => {
-//     button.addEventListener('click', function() {
-//         moveCarousel(index + 1);
-//         clearInterval(slideInterval); // Pause automatic slideshow
-//     });
-// });
-
-// 
+ 
 
 let slideIndex = 1;
 showSlides(slideIndex);
