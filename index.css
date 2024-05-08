@@ -812,7 +812,7 @@ text-align: left;
     }
       
   }
-  @media (min-width:326px)and (max-width:375px){
+  @media (min-width:321px)and (max-width:375px){
 
       .section4-btn1 button{
         margin-left: 60px;
@@ -2741,8 +2741,8 @@ text-align: left;
     display: none; 
   }
   
-  .footer-menu.active {
-    display: block;
+  .footer-menu.active-footer {
+    display: block !important;
   }
   
   .footer-menu li {
@@ -2837,8 +2837,8 @@ text-align: left;
       display: none; 
     }
   
-    .footer-menu.active {
-      display: block; 
+    .footer-menu.active-footer {
+      display: block !important; 
     }
     .footer-line{
     display: block;
