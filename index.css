@@ -23,6 +23,11 @@
 
 
 
+p{
+  color: #676968;
+
+}
+
 
 .navbar_button {
   border-radius: 8px;
@@ -44,6 +49,23 @@
   width: 100% !important;
   height: 34px !important;
 
+}
+
+
+.dropdown-toggle::after {
+  border-top-color: green !important;
+}
+
+/* Custom CSS to change carousel control button color to green */
+.carousel-control-prev,
+.carousel-control-next {
+  background-color: green !important;
+}
+
+/* Custom CSS to change carousel control button icon color to white */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: white;
 }
 
 /* Navbar logo styles */
@@ -104,6 +126,13 @@ text-align: left;
   height: 22.35px !important;
   margin-top: -50px !important;
   margin-left: 20px !important;
+}
+
+@media (max-width:425px){
+  .nav-logo{
+    height: 30px !important;
+    width: 140px !important;
+  }
 }
 
 
@@ -2557,6 +2586,12 @@ text-align: left;
     height: 100%;
     border-left: 2px dotted #2CA068; 
     z-index: -1;
+  }
+
+  .form-control:focus {
+    border-color: #2CA068 !important;
+    box-shadow: none !important;
+    -webkit-box-shadow: none;
   }
   
   /* -------------Responsive -----------------*/
