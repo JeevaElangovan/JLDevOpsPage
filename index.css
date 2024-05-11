@@ -156,6 +156,7 @@ text-align: left;
   .devops-services-part1 h1{
     margin-top: 170px;
     margin-bottom:30px;
+    width: 100% !important;
 
 }
 
@@ -184,10 +185,11 @@ text-align: left;
 
   @media (max-width:320px){
     .devops-services-part1 h1{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: max-content;
+        /* display: flex; */
+        /* flex-direction: column; */
+        /* align-items: center; */
+        /* width: max-content; */
+        font-size: xx-large;
     }
 
   }
