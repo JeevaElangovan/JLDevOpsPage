@@ -146,7 +146,7 @@ text-align: left;
   .devops-services-bgimage{
     background-image: url("Devops/Hero\ Section-\ devOps.png");
     background-size: cover;
-    height: 705px;
+    height: 695px;
     margin-top: -40px;
   }
   .devops-services{
@@ -156,7 +156,7 @@ text-align: left;
   .devops-services-part1 h1{
     margin-top: 170px;
     margin-bottom:30px;
-    width: 100% !important;
+    /* width: 100% !important; */
 
 }
 
@@ -165,9 +165,9 @@ text-align: left;
   }
   .devops-services-part2 img{
     margin-top: 80px;
-    margin-left: 30px;
-    height: 572px;
-    /* width: 900px !important; */
+    margin-left: 97px;
+    height: 552px;
+    width: 565px !important;
     
   }
 
@@ -307,7 +307,7 @@ text-align: left;
   
   .devops-dropdown  button{
       
-      margin-top: 10px;
+      margin-top: 35px;
       height: 42px;
       width: 229px;
       color: #fff;
@@ -362,8 +362,8 @@ text-align: left;
         position: absolute;
         /* top: 60%; */
         margin-left: 15px;
-        width: 54px;
-        height: 4px;
+        width: 28px;
+        height: 3px;
         margin-top: 20px;
         border-radius: 5px;
         background-color: #2CA068;
@@ -516,6 +516,10 @@ text-align: left;
   .consultation-box{
     margin-top: 50px !important;
   }
+
+  .material-symbols-outlined{
+    color: #ACACAC;
+  }
  
   .column{
     width: 100%;
@@ -565,7 +569,11 @@ text-align: left;
 }
 
 
-
+@media (max-width:320px){
+  .column-benefits{
+    height: 300px !important;
+  }
+}
 
 
 @media screen and (max-width: 768px){
@@ -589,6 +597,8 @@ text-align: left;
       }
       .choosing-devops-consultation-heading h1::after{
         margin-top: 20px;
+        width: 28px;
+        height: 3px;
       }
       
       .column-heading{
@@ -603,6 +613,12 @@ text-align: left;
         line-height: 22px;
         text-align: left;
 
+      }
+      .column-benefits{
+        height: 250px ;
+      }
+      .column-benefits span{
+        margin-top: -20px !important;
       }
 }
 
@@ -778,7 +794,7 @@ text-align: left;
         margin-top: -100px !important;
       }
       
-      .expertise-business-adaptable-head::after {
+      /* .expertise-business-adaptable-head::after {
           content: "";
           position: absolute !important;
           margin-left: 10px;
@@ -786,7 +802,7 @@ text-align: left;
           height: 4px;
           border-radius: 5px;
           background-color: #2CA068;
-      }
+      } */
       .expertise-image-container{
         justify-content: left;
       }
@@ -801,14 +817,12 @@ text-align: left;
   @media (max-width:425px){
     
     .expertise-business-adaptable-head::after {
-        content: "";
-        position: absolute;
+        
         top: 86%;
         margin-left: 15px;
-        width: 54px;
-        height: 4px;
-        border-radius: 5px;
-        background-color: #2CA068;
+        width: 28px;
+        height: 3px;
+     
     }
 
     .single-line {
@@ -916,6 +930,8 @@ text-align: left;
     }
     .why-choose-devops-heading h1::after{
         margin-top: 20px;
+        width: 28px;
+        height: 3px;
     }
     .why-choose-devops-heading h1{
         font-size: 30px;
@@ -986,6 +1002,8 @@ text-align: left;
       }
         .emerging-tech-heading h1::after{
             margin-top: 20px;
+            width: 28px;
+            height: 3px;
         }
     }
     @media (max-width: 768px) {
@@ -1062,9 +1080,12 @@ text-align: left;
   }
   .active-industry {
     background: #2CA068;
-   color: #ffffff;
+    
     font-weight: 600;
     
+  }
+  .active-industry p{
+    color: #ffffff !important;
   }
 
   .industry-para{
@@ -1077,6 +1098,7 @@ text-align: left;
     .industry-para p{
         padding: 20px;
         margin-left: 20px;
+        
         
     }
 
@@ -1132,10 +1154,10 @@ text-align: left;
     .industry-responsive-header h1::after{
         content: "";
         position: absolute;
-        top: 50%;
+        top: 56%;
         margin-left: 15px;
-        width: 54px;
-        height: 4px;
+        width: 28px;
+        height: 3px;
         margin-top: 20px;
         border-radius: 5px;
         background-color: #2CA068;
@@ -1274,8 +1296,15 @@ text-align: left;
             display: none;
         }
     }
- 
-    @media (max-width:375px){
+    @media(max-width:320px){
+      .our-case-studies-btn{
+        margin-top: -490px !important;
+      }
+      .our-case-btn2 button{
+        margin-left: -40px !important;
+      }
+    }
+    @media(min-width:321px) and (max-width:375px){
       .our-case-studies-btn{
         margin-top: -440px !important;
       }
@@ -1285,6 +1314,11 @@ text-align: left;
     }
 
  @media (max-width: 425px) {
+  .Our-case-Studies-head h1::after{
+    width: 28px;
+    height: 3px;
+    
+  }
   .Our-case-Studies-head h1{
     font-size: 29px;
     margin-left: -15px;
@@ -1453,6 +1487,13 @@ text-align: left;
 }
 
 @media (max-width:425px){
+
+  .our-testimonials-heading h1::after{
+    width: 28px;
+    height: 3px;
+
+    }
+
     .our-testimonials-heading h1{
         font-size: xx-large;
     }
@@ -1493,6 +1534,9 @@ text-align: left;
 
   .about_session10_maindiv{
     margin-top: 60px;
+  }
+  .about-session{
+    margin-top: 30px;
   }
   .footer {
     background-color: #ffffff;
@@ -1569,7 +1613,7 @@ text-align: left;
     font-weight: 500;
   }
   .about-session__profile {
-    height: 30px;
+    height: 30px !important;
     width: 30px;
     border-radius: 50%;
   }
@@ -1579,6 +1623,7 @@ text-align: left;
     font-weight: 400;
     line-height: 20.11px;
     color: #706E72;
+    margin-top: 5px !important;
 
   }
   .footer-border {
@@ -1601,6 +1646,9 @@ text-align: left;
   
   .footer .icon:hover {
     color: #000000;
+  }
+  .footer-text1{
+    margin-top: 7px;
   }
   
   .footer-text1, .footer-text2 {
@@ -1646,10 +1694,22 @@ text-align: left;
     text-align: center;
     color: #ffffff;
   }
+  .circle-content p{
+    color: #ffffff;
+  }
   .about-session__title{
     margin-top: 55px;
     font-size: 24px;
+    color: #2B2A2C;
+
     font-weight: 600;
+  }
+
+  @media (max-width:425px){
+    .about_session10_para1::after{
+      width: 28px;
+      height: 3px;
+    }
   }
   
   @media only screen and (max-width: 768px) {
@@ -2253,6 +2313,14 @@ text-align: left;
   }
   
   /* -------------Responsive -----------------*/
+
+  @media(min-width:376px) and (max-width:425px){
+    .vertical-line2 {
+      height: 110px !important;
+
+  }
+
+}
   
   @media only screen and (max-width: 768px) {
 
@@ -2794,6 +2862,8 @@ text-align: left;
     color: #000000;
     font-weight: 500;
   }
+
+  
   
   .footer-border {
     height: 1px;
@@ -2803,7 +2873,12 @@ text-align: left;
   .footer-text3 {
     display: flex; 
 }
-  .footer .icon {
+
+.footer-text3 i{
+  margin-left: 0px !important;
+
+} 
+ .footer .icon {
     height: 32px;
     width: 32px;
     background-color: #f3f3f3;
@@ -2873,6 +2948,9 @@ text-align: left;
     .footer-menu {
       display: none; 
     }
+    .footer-column h3{
+      color:#676968;
+    }
   
     .footer-menu.active-footer {
       display: block !important; 
@@ -2890,6 +2968,10 @@ text-align: left;
   }
   .footer-text2{
     margin-top: 15px;
+  }
+  .footer-text3 i{
+    margin-left: 2px !important;
+  
   }
   }
 
@@ -2955,8 +3037,12 @@ text-align: left;
   color: #676968;
   
 }
+.frequently-asked-questions-header i{
+  color: #676968 !important;
+}
 .frequently-asked-questions-item {
     margin-bottom: 10px; 
+    border: none !important;
 }
 
 .frequently-asked-questions-header.active {
@@ -2980,10 +3066,12 @@ text-align: left;
   justify-content: space-between;
   align-items: center;
   background-color: white;
-  border: 2px solid #ccc;
+  border: 1px solid #E8E7E7;
   padding: 10px;
   cursor: pointer;
   transition: background-color 0.5s ease; 
+  border-radius: 8px;
+
 }
 .frequently-asked-questions-header:hover{
   border-color:  #2CA068;
@@ -3020,6 +3108,8 @@ text-align: left;
 @media(max-width:425px){
   .section13heading::after{
     margin-top: 20px !important;
+    width: 28px;
+    height: 3px;
   }
 }
 
