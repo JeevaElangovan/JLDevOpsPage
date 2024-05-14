@@ -183,13 +183,10 @@ text-align: left;
     font-weight: 500;
   }
 
-  @media (max-width:320px){
+  @media (max-width:375px){
     .devops-services-part1 h1{
-        /* display: flex; */
-        /* flex-direction: column; */
-        /* align-items: center; */
-        /* width: max-content; */
-        font-size: xx-large;
+        
+        font-size: 33px;
     }
 
   }
@@ -353,7 +350,7 @@ text-align: left;
 
     .consulting-responsve-header h1{
         position: relative;
-        margin-top: 250px;
+        margin-top: 280px;
         font-size: xx-large;
     }
 
@@ -593,7 +590,7 @@ text-align: left;
       }
       .choosing-devops-consultation-heading h1{
         width: 80%;
-        font-size: 25px;
+        font-size: xx-large;
       }
       .choosing-devops-consultation-heading h1::after{
         margin-top: 20px;
@@ -788,7 +785,7 @@ text-align: left;
    
     .expertise-business-adaptable-head {
           position: relative;
-            font-size: 30px;
+            font-size: xx-large;
       }
       .expertise-business-adaptable{
         margin-top: -100px !important;
@@ -934,7 +931,7 @@ text-align: left;
         height: 3px;
     }
     .why-choose-devops-heading h1{
-        font-size: 30px;
+        font-size: xx-large;
     }
   }
   
@@ -996,6 +993,13 @@ text-align: left;
         margin-top: 40px !important;
     }
     }
+
+    @media (min-width:321px) and (max-width:375px){
+      .emerging-tech-heading h1::after{
+        margin-top: 40px !important;
+    }
+    }
+
     @media (max-width:425px){
       .emerging-tech-heading h1{
         font-size: xx-large;
@@ -1133,7 +1137,7 @@ text-align: left;
 
   @media (max-width:375px){
     .industry-responsive-header h1{
-      /* font-size: 30px !important; */
+      font-size: xx-large !important;
       width: 80%;
     }
     .industry-responsive-header h1::after{
@@ -1172,19 +1176,16 @@ text-align: left;
     }
     
     
-
-
   }
-
 
 
 
   /* ---Section - 7 Our Industry Based DevOps Capabilities */
 
 
-       /*--- Section - 8 Our case Studies--- */
+  /*--- Section - 8 Our case Studies--- */
 
-       .Our-case-Studies-fluid{
+  .Our-case-Studies-fluid{
         background: rgba(35, 137, 156, 0.05);
         height: auto;
         margin-top: 60px;
@@ -1320,7 +1321,7 @@ text-align: left;
     
   }
   .Our-case-Studies-head h1{
-    font-size: 29px;
+    font-size: xx-large;
     margin-left: -15px;
   }
     .Our-case-Studies-col1 h5{
@@ -1714,7 +1715,7 @@ text-align: left;
   
   @media only screen and (max-width: 768px) {
     .about_session10_para1 {
-      font-size: 28px;
+      font-size: xx-large;
       text-align: left;
       /* margin-left: 90px; */
       margin-top: 20px;
@@ -3123,7 +3124,7 @@ text-align: left;
    }
    .section13heading{
     width: 100%;
-    font-size: 32px;
+    font-size: xx-large;
     font-weight: 600;
     line-height: 40.22px;
     text-align: left;
