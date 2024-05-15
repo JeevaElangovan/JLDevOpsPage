@@ -147,7 +147,7 @@ text-align: left;
     background-image: url("Devops/DevOps\ hero\ bg.png");
     background-size: cover;
     height: 650px;
-    margin-top: -40px;
+    margin-top: -90px;
   }
   .devops-services{
     margin-top: 100px;
@@ -156,6 +156,7 @@ text-align: left;
   .devops-services-part1 h1{
     margin-top: 170px;
     margin-bottom:30px;
+    font-size: 56px;
     /* width: 100% !important; */
 
 }
@@ -3106,6 +3107,7 @@ padding-right: 2px;
 .frequently-asked-questions-header.active .accordion-toggle .arrow {
   border-color: white;
 }
+
 
 .frequently-asked-questions-header {
   display: flex;
