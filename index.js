@@ -208,46 +208,78 @@ $(document).ready(function() {
 
 //  section - 8 Our Case Studies
  // Function to move carousel to a specific slide
- function moveCarousel(slideIndex) {
-    $('#carouselExampleControls').carousel(slideIndex);
-  }
+//  function moveCarousel(slideIndexCase) {
+//     $('#carouselExampleControls').carousel(slideIndexCase);
+//   }
 
-  $(document).ready(function() {
-    var slideInterval; // Variable to store slide interval
+//   $(document).ready(function() {
+//     var slideIntervalCase; // Variable to store slide interval
 
+//     // Highlight active button when carousel slide changes
+//     $('#carouselExampleControls').on('slide.bs.carousel', function (event) {
+//       var slideIndexCase = $(event.relatedTarget).index();
+//       $('.our-case-btn').removeClass('active-btn');
+//       $('.our-case-btn').eq(slideIndexCase).addClass('active-btn');
+//     });
+
+//     // Pause automatic slideshow on hover
+//     // $('#carouselExampleControls').on('mouseenter', function() {
+//     //   clearInterval(slideInterval);
+//     // });
+
+//     // Resume automatic slideshow on mouse leave
+//     $('#carouselExampleControls').on('mouseleave', function() {
+//       slideIntervalCase = setInterval(function() {
+//         $('#carouselExampleControls').carousel('next');
+//       }, 10000); 
+//     });
+
+//     // Start automatic slideshow
+//     slideIntervalCase = setInterval(function() {
+//       $('#carouselExampleControls').carousel('next');
+//     }, 10000); 
+//   });
+
+$(document).ready(function() {
+    var slideIntervalCase; // Variable to store slide interval
+  
+    // Initialize the carousel without automatic cycling
+    $('#carouselExampleControls').carousel({
+      interval: false
+    });
+  
     // Highlight active button when carousel slide changes
     $('#carouselExampleControls').on('slide.bs.carousel', function (event) {
-      var slideIndex = $(event.relatedTarget).index();
+      var slideIndexCase = $(event.relatedTarget).index();
       $('.our-case-btn').removeClass('active-btn');
-      $('.our-case-btn').eq(slideIndex).addClass('active-btn');
+      $('.our-case-btn').eq(slideIndexCase).addClass('active-btn');
     });
-
+  
     // Pause automatic slideshow on hover
-    // $('#carouselExampleControls').on('mouseenter', function() {
-    //   clearInterval(slideInterval);
-    // });
-
+    $('#carouselExampleControls').on('mouseenter', function() {
+      clearInterval(slideIntervalCase);
+    });
+  
     // Resume automatic slideshow on mouse leave
     $('#carouselExampleControls').on('mouseleave', function() {
-      slideInterval = setInterval(function() {
+      slideIntervalCase = setInterval(function() {
         $('#carouselExampleControls').carousel('next');
-      }, 4000); 
+      }, 10000); 
     });
-
+  
     // Start automatic slideshow
-    slideInterval = setInterval(function() {
+    slideIntervalCase = setInterval(function() {
       $('#carouselExampleControls').carousel('next');
-    }, 4000); 
+    }, 10000); 
   });
-
-
+  
 // section - 9 Our testimonials
  
 
 let slideIndex = 1;
 showSlides(slideIndex);
 
-function moveCarousel(n) {
+function moveCarouseltwo(n) {
     showSlides(slideIndex = n);
 }
 
@@ -269,22 +301,22 @@ function showSlides(n) {
 }
 
 // Automatic slideshow
-let slideInterval = setInterval(automaticSlide, 2000); // Change 5000 to desired interval in milliseconds
+let slideInterval = setInterval(automaticSlide, 4000); // Change 5000 to desired interval in milliseconds
 
 function automaticSlide() {
-    moveCarousel(slideIndex + 1);
+    moveCarouseltwo(slideIndex + 1);
 }
 
 // Resume automatic slideshow on mouse leave
 carouselContainer.addEventListener('mouseleave', function () {
-    slideInterval = setInterval(automaticSlide, 2000); // Change 5000 to desired interval in milliseconds
+    slideInterval = setInterval(automaticSlide, 4000); // Change 5000 to desired interval in milliseconds
 });
 
 // Clicking on a button to move carousel
 const carouselButtons = document.querySelectorAll('.our-testimonials-btn button');
 carouselButtons.forEach((button, index) => {
     button.addEventListener('click', function() {
-        moveCarousel(index + 1);
+        moveCarouseltwo(index + 1);
         clearInterval(slideInterval); // Pause automatic slideshow
     });
 });
@@ -312,13 +344,82 @@ function handleSwipe() {
 
     if (deltaX > swipeThreshold) {
         // Swipe right
-        moveCarousel(slideIndex - 1);
+        moveCarouseltwo(slideIndex - 1);
     } else if (deltaX < -swipeThreshold) {
         // Swipe left
-        moveCarousel(slideIndex + 1);
+        moveCarouseltwo(slideIndex + 1);
     }
 }
+// ----------------------
+// Our Testimonials Section
+// let currentTestimonialSlide = 0;
+// const testimonialSlides = document.querySelectorAll('.our-testimonials-section9');
+// const testimonialButtons = document.querySelectorAll('.our-testimonials-btn button');
+// const testimonialSlideInterval = 3000; // Interval time in milliseconds (e.g., 5000ms = 5 seconds)
 
+// function showTestimonialSlide(index) {
+//     testimonialSlides.forEach((slide, i) => {
+//         slide.style.display = i === index ? "block" : "none";
+//         testimonialButtons[i].classList.toggle('active-btn', i === index);
+//     });
+// }
+
+// function moveTestimonialCarousel(index) {
+//     currentTestimonialSlide = index;
+//     showTestimonialSlide(currentTestimonialSlide);
+// }
+
+// function nextTestimonialSlide() {
+//     currentTestimonialSlide = (currentTestimonialSlide + 1) % testimonialSlides.length;
+//     showTestimonialSlide(currentTestimonialSlide);
+// }
+
+// let autoTestimonialSlideInterval = setInterval(nextTestimonialSlide, testimonialSlideInterval);
+
+// testimonialButtons.forEach((button, index) => {
+//     button.addEventListener('click', () => {
+//         console.log('Button clicked:', index); // Check if the button click event is triggered
+//         clearInterval(autoTestimonialSlideInterval); // Stop the auto slideshow
+//         moveTestimonialCarousel(index);
+//         autoTestimonialSlideInterval = setInterval(nextTestimonialSlide, testimonialSlideInterval); // Restart the auto slideshow
+//     });
+// });
+
+// // Initialize the first slide as active
+// document.addEventListener('DOMContentLoaded', (event) => {
+//     showTestimonialSlide(currentTestimonialSlide);
+// });
+
+// // Touch swipe functionality for Our Testimonials Section
+// let testimonialTouchStartX = 0;
+// let testimonialTouchEndX = 0;
+
+// function handleTestimonialTouchStart(event) {
+//     testimonialTouchStartX = event.changedTouches[0].screenX;
+// }
+
+// function handleTestimonialTouchMove(event) {
+//     testimonialTouchEndX = event.changedTouches[0].screenX;
+// }
+
+// function handleTestimonialTouchEnd() {
+//     const swipeThreshold = 50; // Adjust as needed
+//     const deltaX = testimonialTouchEndX - testimonialTouchStartX;
+
+//     if (deltaX > swipeThreshold) {
+//         // Swipe right
+//         moveTestimonialCarousel(currentTestimonialSlide - 1);
+//     } else if (deltaX < -swipeThreshold) {
+//         // Swipe left
+//         moveTestimonialCarousel(currentTestimonialSlide + 1);
+//     }
+// }
+
+// testimonialSlides.forEach(slide => {
+//     slide.addEventListener('touchstart', handleTestimonialTouchStart, false);
+//     slide.addEventListener('touchmove', handleTestimonialTouchMove, false);
+//     slide.addEventListener('touchend', handleTestimonialTouchEnd, false);
+// });
 
 
 
@@ -365,4 +466,5 @@ document.addEventListener('DOMContentLoaded', function() {
 //         });
 //     });
 //   });
+
 
