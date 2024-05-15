@@ -146,7 +146,7 @@ text-align: left;
   .devops-services-bgimage{
     background-image: url("Devops/DevOps\ hero\ bg.png");
     background-size: cover;
-    height: 695px;
+    height: 650px;
     margin-top: -40px;
   }
   .devops-services{
@@ -720,11 +720,14 @@ text-align: left;
     position: relative;
     z-index: -10;
     
+    
    
   }
   .single-line hr{
     height: 2px;
     background: rgba(233, 233, 233, 1);
+    width: 90%;
+    margin-left: 65px;
   }
  
  
@@ -755,6 +758,7 @@ text-align: left;
       overflow-x: auto; 
       /* margin-top: 50px; */
       justify-content: center;
+      padding-left: 20px;
   }
   
   .expertise-image-container img {
