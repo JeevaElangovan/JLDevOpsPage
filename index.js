@@ -275,12 +275,11 @@ $(document).ready(function() {
   
 // section - 9 Our testimonials
  
-
-let slideIndex = 1;
-showSlides(slideIndex);
+let currentSlideIndex = 1;
+showSlides(currentSlideIndex);
 
 function moveCarouseltwo(n) {
-    showSlides(slideIndex = n);
+    showSlides(currentSlideIndex = n);
 }
 
 function showSlides(n) {
@@ -288,43 +287,50 @@ function showSlides(n) {
     const slides = document.getElementsByClassName("our-testimonials-section9");
     const buttons = document.querySelectorAll('.our-testimonials-btn button');
 
-    if (n > slides.length) { slideIndex = 1 }
-    if (n < 1) { slideIndex = slides.length }
+    if (n > slides.length) { currentSlideIndex = 1; }
+    if (n < 1) { currentSlideIndex = slides.length; }
     for (i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
     }
     for (i = 0; i < buttons.length; i++) {
         buttons[i].classList.remove('active-btn');
     }
-    slides[slideIndex - 1].style.display = "block";
-    buttons[slideIndex - 1].classList.add('active-btn');
+    slides[currentSlideIndex - 1].style.display = "block";
+    buttons[currentSlideIndex - 1].classList.add('active-btn');
 }
 
 // Automatic slideshow
-let slideInterval = setInterval(automaticSlide, 4000); // Change 5000 to desired interval in milliseconds
+let autoSlideInterval = setInterval(autoSlide, 4000);
 
-function automaticSlide() {
-    moveCarouseltwo(slideIndex + 1);
+function autoSlide() {
+    moveCarouseltwo(currentSlideIndex + 1);
+}
+
+// Clear and reset interval to avoid multiple intervals
+function resetAutoSlide() {
+    clearInterval(autoSlideInterval);
+    autoSlideInterval = setInterval(autoSlide, 4000);
 }
 
 // Resume automatic slideshow on mouse leave
+const carouselContainer = document.querySelector('.carousel-container');
 carouselContainer.addEventListener('mouseleave', function () {
-    slideInterval = setInterval(automaticSlide, 4000); // Change 5000 to desired interval in milliseconds
+    resetAutoSlide();
 });
 
 // Clicking on a button to move carousel
-const carouselButtons = document.querySelectorAll('.our-testimonials-btn button');
-carouselButtons.forEach((button, index) => {
+const navButtons = document.querySelectorAll('.our-testimonials-btn button');
+navButtons.forEach((button, index) => {
     button.addEventListener('click', function() {
         moveCarouseltwo(index + 1);
-        clearInterval(slideInterval); // Pause automatic slideshow
+        clearInterval(autoSlideInterval); // Pause automatic slideshow
+        resetAutoSlide();
     });
 });
 
 // Touch swipe functionality
 let touchStartX = 0;
 let touchEndX = 0;
-const carouselContainer = document.querySelector('.carousel-container');
 
 carouselContainer.addEventListener('touchstart', function(event) {
     touchStartX = event.touches[0].clientX;
@@ -335,21 +341,99 @@ carouselContainer.addEventListener('touchmove', function(event) {
 });
 
 carouselContainer.addEventListener('touchend', function() {
-    handleSwipe();
+    handleSwipeGesture();
 });
 
-function handleSwipe() {
+function handleSwipeGesture() {
     const swipeThreshold = 50; // Adjust as needed
     const deltaX = touchEndX - touchStartX;
 
     if (deltaX > swipeThreshold) {
         // Swipe right
-        moveCarouseltwo(slideIndex - 1);
+        moveCarouseltwo(currentSlideIndex - 1);
     } else if (deltaX < -swipeThreshold) {
         // Swipe left
-        moveCarouseltwo(slideIndex + 1);
+        moveCarouseltwo(currentSlideIndex + 1);
     }
+    resetAutoSlide(); // Reset the interval after swipe
 }
+
+
+
+// let slideIndex = 1;
+// showSlides(slideIndex);
+
+// function moveCarouseltwo(n) {
+//     showSlides(slideIndex = n);
+// }
+
+// function showSlides(n) {
+//     let i;
+//     const slides = document.getElementsByClassName("our-testimonials-section9");
+//     const buttons = document.querySelectorAll('.our-testimonials-btn button');
+
+//     if (n > slides.length) { slideIndex = 1 }
+//     if (n < 1) { slideIndex = slides.length }
+//     for (i = 0; i < slides.length; i++) {
+//         slides[i].style.display = "none";
+//     }
+//     for (i = 0; i < buttons.length; i++) {
+//         buttons[i].classList.remove('active-btn');
+//     }
+//     slides[slideIndex - 1].style.display = "block";
+//     buttons[slideIndex - 1].classList.add('active-btn');
+// }
+
+// // Automatic slideshow
+// let slideInterval = setInterval(automaticSlide, 4000); // Change 5000 to desired interval in milliseconds
+
+// function automaticSlide() {
+//     moveCarouseltwo(slideIndex + 1);
+// }
+
+// // Resume automatic slideshow on mouse leave
+// carouselContainer.addEventListener('mouseleave', function () {
+//     slideInterval = setInterval(automaticSlide, 4000); // Change 5000 to desired interval in milliseconds
+// });
+
+// // Clicking on a button to move carousel
+// const carouselButtons = document.querySelectorAll('.our-testimonials-btn button');
+// carouselButtons.forEach((button, index) => {
+//     button.addEventListener('click', function() {
+//         moveCarouseltwo(index + 1);
+//         clearInterval(slideInterval); // Pause automatic slideshow
+//     });
+// });
+
+// // Touch swipe functionality
+// let touchStartX = 0;
+// let touchEndX = 0;
+// const carouselContainer = document.querySelector('.carousel-container');
+
+// carouselContainer.addEventListener('touchstart', function(event) {
+//     touchStartX = event.touches[0].clientX;
+// });
+
+// carouselContainer.addEventListener('touchmove', function(event) {
+//     touchEndX = event.touches[0].clientX;
+// });
+
+// carouselContainer.addEventListener('touchend', function() {
+//     handleSwipe();
+// });
+
+// function handleSwipe() {
+//     const swipeThreshold = 50; // Adjust as needed
+//     const deltaX = touchEndX - touchStartX;
+
+//     if (deltaX > swipeThreshold) {
+//         // Swipe right
+//         moveCarouseltwo(slideIndex - 1);
+//     } else if (deltaX < -swipeThreshold) {
+//         // Swipe left
+//         moveCarouseltwo(slideIndex + 1);
+//     }
+// }
 // ----------------------
 // Our Testimonials Section
 // let currentTestimonialSlide = 0;
