@@ -835,11 +835,22 @@ text-align: left;
       
   }
 
-  @media (max-width:425px){
+  @media(min-width:375px) and (max-width:425px){
+    .single-line {
+
+      width: 95% !important;
+
+    }
 
     .business-adaptable-part-1 .two{
       margin-left: 6px;
     }
+
+  }
+
+  @media (max-width:425px){
+
+    
     
     .expertise-business-adaptable-head::after {
         
@@ -854,7 +865,6 @@ text-align: left;
         margin-top: -14px !important;
         position: relative;
         overflow-x: visible; 
-        width: 95% !important;
     }
     
     .single-line hr {
