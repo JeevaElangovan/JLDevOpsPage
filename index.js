@@ -216,138 +216,320 @@ $(document).ready(function() {
 
 
 //  section - 8 Our Case Studies
- // Function to move carousel to a specific slide
-//  function moveCarousel(slideIndexCase) {
-//     $('#carouselExampleControls').carousel(slideIndexCase);
-//   }
 
-//   $(document).ready(function() {
+
+// $(document).ready(function() {
 //     var slideIntervalCase; // Variable to store slide interval
-
+  
+//     // Initialize the carousel without automatic cycling
+//     $('#carouselExampleControls').carousel({
+//       interval: false
+//     });
+  
 //     // Highlight active button when carousel slide changes
 //     $('#carouselExampleControls').on('slide.bs.carousel', function (event) {
 //       var slideIndexCase = $(event.relatedTarget).index();
 //       $('.our-case-btn').removeClass('active-btn');
 //       $('.our-case-btn').eq(slideIndexCase).addClass('active-btn');
 //     });
-
+  
 //     // Pause automatic slideshow on hover
-//     // $('#carouselExampleControls').on('mouseenter', function() {
-//     //   clearInterval(slideInterval);
-//     // });
-
+//     $('#carouselExampleControls').on('mouseenter', function() {
+//       clearInterval(slideIntervalCase);
+//     });
+  
 //     // Resume automatic slideshow on mouse leave
 //     $('#carouselExampleControls').on('mouseleave', function() {
 //       slideIntervalCase = setInterval(function() {
 //         $('#carouselExampleControls').carousel('next');
-//       }, 10000); 
+//       }, 15000); 
 //     });
-
+  
 //     // Start automatic slideshow
 //     slideIntervalCase = setInterval(function() {
 //       $('#carouselExampleControls').carousel('next');
-//     }, 10000); 
+//     }, 15000); 
+  
+//     // Function to move carousel to specific slide
+//     window.moveCarousel = function(slideIndex) {
+//       $('#carouselExampleControls').carousel(slideIndex);
+//     }
+  
+//     // Attach click event to buttons
+//     $('.our-case-btn').on('click', function() {
+//       var slideIndex = $(this).index();
+//       moveCarousel(slideIndex);
+//     });
 //   });
 
 $(document).ready(function() {
     var slideIntervalCase; // Variable to store slide interval
-  
+
     // Initialize the carousel without automatic cycling
     $('#carouselExampleControls').carousel({
-      interval: false
+        interval: false
     });
-  
+
     // Highlight active button when carousel slide changes
-    $('#carouselExampleControls').on('slide.bs.carousel', function (event) {
-      var slideIndexCase = $(event.relatedTarget).index();
-      $('.our-case-btn').removeClass('active-btn');
-      $('.our-case-btn').eq(slideIndexCase).addClass('active-btn');
+    $('#carouselExampleControls').on('slide.bs.carousel', function(event) {
+        var slideIndexCase = $(event.relatedTarget).index();
+        $('.our-case-btn').removeClass('active-btn');
+        $('.our-case-btn').eq(slideIndexCase).addClass('active-btn');
     });
-  
+
     // Pause automatic slideshow on hover
     $('#carouselExampleControls').on('mouseenter', function() {
-      clearInterval(slideIntervalCase);
+        clearInterval(slideIntervalCase);
     });
-  
+
     // Resume automatic slideshow on mouse leave
     $('#carouselExampleControls').on('mouseleave', function() {
-      slideIntervalCase = setInterval(function() {
-        $('#carouselExampleControls').carousel('next');
-      }, 10000); 
+        slideIntervalCase = setInterval(function() {
+            $('#carouselExampleControls').carousel('next');
+        }, 15000);
     });
-  
+
     // Start automatic slideshow
     slideIntervalCase = setInterval(function() {
-      $('#carouselExampleControls').carousel('next');
-    }, 10000); 
-  });
-  
-// section - 9 Our testimonials
- 
-let currentSlideIndex = 1;
-showSlides(currentSlideIndex);
+        $('#carouselExampleControls').carousel('next');
+    }, 15000);
 
-function moveCarouseltwo(n) {
-    showSlides(currentSlideIndex = n);
-}
-
-function showSlides(n) {
-    let i;
-    const slides = document.getElementsByClassName("our-testimonials-section9");
-    const buttons = document.querySelectorAll('.our-testimonials-btn button');
-
-    if (n > slides.length) { currentSlideIndex = 1; }
-    if (n < 1) { currentSlideIndex = slides.length; }
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
+    // Function to move carousel to specific slide
+    window.moveCarousel = function(slideIndex) {
+        $('#carouselExampleControls').carousel(slideIndex);
     }
-    for (i = 0; i < buttons.length; i++) {
-        buttons[i].classList.remove('active-btn');
-    }
-    slides[currentSlideIndex - 1].style.display = "block";
-    buttons[currentSlideIndex - 1].classList.add('active-btn');
-}
 
-// Automatic slideshow
-let autoSlideInterval = setInterval(autoSlide, 4000);
-
-function autoSlide() {
-    moveCarouseltwo(currentSlideIndex + 1);
-}
-
-// Clear and reset interval to avoid multiple intervals
-function resetAutoSlide() {
-    clearInterval(autoSlideInterval);
-    autoSlideInterval = setInterval(autoSlide, 4000);
-}
-
-// Resume automatic slideshow on mouse leave
-const carouselContainer = document.querySelector('.carousel-container');
-carouselContainer.addEventListener('mouseleave', function () {
-    resetAutoSlide();
-});
-
-// Clicking on a button to move carousel
-const navButtons = document.querySelectorAll('.our-testimonials-btn button');
-navButtons.forEach((button, index) => {
-    button.addEventListener('click', function() {
-        moveCarouseltwo(index + 1);
-        clearInterval(autoSlideInterval); // Pause automatic slideshow
-        resetAutoSlide();
+    // Attach click event to buttons
+    $('.our-case-btn').on('click', function() {
+        var slideIndex = $(this).index();
+        moveCarousel(slideIndex);
     });
 });
 
-// Touch swipe functionality
+
+// section - 9 Our testimonials
+
+
+// JavaScript Slide Functionality
+
+let currentSlide = 0;
+const slides = document.querySelectorAll('.container.test-1');
+const buttons = document.querySelectorAll('.testimonial-btn');
 let touchStartX = 0;
 let touchEndX = 0;
 
-carouselContainer.addEventListener('touchstart', function(event) {
+function showSlide(slideIndex) {
+    slides.forEach((slide) => {
+        slide.classList.remove('active-test');
+    });
+    slides[slideIndex].classList.add('active-test');
+}
+
+function moveCarousel(index) {
+    showSlide(index);
+    currentSlide = index;
+    updateButtons(index);
+}
+
+function updateButtons(index) {
+    buttons.forEach((button, i) => {
+        if (i === index) {
+            button.classList.add('active-test-btn');
+        } else {
+            button.classList.remove('active-test-btn');
+        }
+    });
+}
+
+// Connect buttons to moveCarousel function
+buttons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+        moveCarousel(index);
+    });
+});
+
+// Handle touch events for swipe
+document.addEventListener('touchstart', (event) => {
     touchStartX = event.touches[0].clientX;
 });
 
-carouselContainer.addEventListener('touchmove', function(event) {
-    touchEndX = event.touches[0].clientX;
+document.addEventListener('touchend', (event) => {
+    touchEndX = event.changedTouches[0].clientX;
+    handleSwipe();
 });
+
+function handleSwipe() {
+    const swipeThreshold = 100; // Adjust as needed
+    const swipeDistance = touchEndX - touchStartX;
+    
+    if (Math.abs(swipeDistance) >= swipeThreshold) {
+        if (swipeDistance > 0) {
+            // Swiped right
+            if (currentSlide > 0) {
+                moveCarousel(currentSlide - 1);
+            } else {
+                moveCarousel(slides.length - 1);
+            }
+        } else {
+            // Swiped left
+            if (currentSlide < slides.length - 1) {
+                moveCarousel(currentSlide + 1);
+            } else {
+                moveCarousel(0);
+            }
+        }
+    }
+}
+
+// Automatic slide change after 5 seconds
+function autoSlide() {
+    if (currentSlide === slides.length - 1) {
+        currentSlide = 0;
+    } else {
+        currentSlide++;
+    }
+    showSlide(currentSlide);
+    updateButtons(currentSlide);
+}
+
+// Auto slide change every 5 seconds
+setInterval(autoSlide, 5000);
+
+
+// let currentBlogSlide = 0;
+// const blogSlides = document.querySelectorAll('.container.about-session');
+// const blogButtons = document.querySelectorAll('.testimonial-btn');
+// const blogSlideInterval = 3000; // Interval time in milliseconds (e.g., 5000ms = 5 seconds)
+
+// function showBlogSlide(index) {
+//     blogSlides.forEach((slide, i) => {
+//         slide.classList.toggle('active-test', i === index);
+//         blogButtons[i].classList.toggle('active-test-btn', i === index);
+//     });
+// }
+
+// function moveBlogCarousel(index) {
+//     currentBlogSlide = index;
+//     showBlogSlide(currentBlogSlide);
+// }
+
+// function nextBlogSlide() {
+//     currentBlogSlide = (currentBlogSlide + 1) % blogSlides.length;
+//     showBlogSlide(currentBlogSlide);
+// }
+
+// let autoBlogSlideInterval = setInterval(nextBlogSlide, blogSlideInterval);
+
+// // blogButtons.forEach((button, index) => {
+// //     button.addEventListener('click', () => {
+// //         clearInterval(autoBlogSlideInterval); // Stop the auto slideshow
+// //         moveBlogCarousel(index);
+// //         autoBlogSlideInterval = setInterval(nextBlogSlide, blogSlideInterval); // Restart the auto slideshow
+// //     });
+// // });
+
+// // Initialize the first slide as active
+// document.addEventListener('DOMContentLoaded', (event) => {
+//     showBlogSlide(currentBlogSlide);
+// });
+
+// // Touch swipe functionality for News and Blogs Section
+// let blogTouchStartX = 0;
+// let blogTouchEndX = 0;
+
+// function handleBlogTouchStart(event) {
+//     blogTouchStartX = event.changedTouches[0].screenX;
+// }
+
+// function handleBlogTouchMove(event) {
+//     blogTouchEndX = event.changedTouches[0].screenX;
+// }
+
+// function handleBlogTouchEnd() {
+//     if (blogTouchEndX < blogTouchStartX - 50) { // Swipe left
+//         nextBlogSlide();
+//         clearInterval(autoBlogSlideInterval);
+//         autoBlogSlideInterval = setInterval(nextBlogSlide, blogSlideInterval);
+//     }
+//     if (blogTouchEndX > blogTouchStartX + 50) { // Swipe right
+//         currentBlogSlide = (currentBlogSlide - 1 + blogSlides.length) % blogSlides.length;
+//         showBlogSlide(currentBlogSlide);
+//         clearInterval(autoBlogSlideInterval);
+//         autoBlogSlideInterval = setInterval(nextBlogSlide, blogSlideInterval);
+//     }
+// }
+
+// blogSlides.forEach(slide => {
+//     slide.addEventListener('touchstart', handleBlogTouchStart, false);
+//     slide.addEventListener('touchmove', handleBlogTouchMove, false);
+//     slide.addEventListener('touchend', handleBlogTouchEnd, false);
+// }); 
+// =========================================================
+
+// let currentSlideIndex = 1;
+// showSlides(currentSlideIndex);
+
+// function moveCarouseltwo(n) {
+//     showSlides(currentSlideIndex = n);
+// }
+
+// function showSlides(n) {
+//     let i;
+//     const slides = document.getElementsByClassName("our-testimonials-section9");
+//     const buttons = document.querySelectorAll('.our-testimonials-btn button');
+
+//     if (n > slides.length) { currentSlideIndex = 1; }
+//     if (n < 1) { currentSlideIndex = slides.length; }
+//     for (i = 0; i < slides.length; i++) {
+//         slides[i].style.display = "none";
+//     }
+//     for (i = 0; i < buttons.length; i++) {
+//         buttons[i].classList.remove('active-btn');
+//     }
+//     slides[currentSlideIndex - 1].style.display = "block";
+//     buttons[currentSlideIndex - 1].classList.add('active-btn');
+// }
+
+// // Automatic slideshow
+// let autoSlideInterval = setInterval(autoSlide, 4000);
+
+// function autoSlide() {
+//     moveCarouseltwo(currentSlideIndex + 1);
+// }
+
+// // Clear and reset interval to avoid multiple intervals
+// function resetAutoSlide() {
+//     clearInterval(autoSlideInterval);
+//     autoSlideInterval = setInterval(autoSlide, 4000);
+// }
+
+// // Resume automatic slideshow on mouse leave
+// const carouselContainer = document.querySelector('.carousel-container');
+// carouselContainer.addEventListener('mouseleave', function () {
+//     resetAutoSlide();
+// });
+
+// // Clicking on a button to move carousel
+// const navButtons = document.querySelectorAll('.our-testimonials-btn button');
+// navButtons.forEach((button, index) => {
+//     button.addEventListener('click', function() {
+//         moveCarouseltwo(index + 1);
+//         clearInterval(autoSlideInterval); // Pause automatic slideshow
+//         resetAutoSlide();
+//     });
+// });
+
+// // Touch swipe functionality
+// let touchStartX = 0;
+// let touchEndX = 0;
+
+// carouselContainer.addEventListener('touchstart', function(event) {
+//     touchStartX = event.touches[0].clientX;
+// });
+
+// carouselContainer.addEventListener('touchmove', function(event) {
+//     touchEndX = event.touches[0].clientX;
+// });
 
 carouselContainer.addEventListener('touchend', function() {
     handleSwipeGesture();
@@ -367,152 +549,6 @@ function handleSwipeGesture() {
     resetAutoSlide(); // Reset the interval after swipe
 }
 
-
-
-// let slideIndex = 1;
-// showSlides(slideIndex);
-
-// function moveCarouseltwo(n) {
-//     showSlides(slideIndex = n);
-// }
-
-// function showSlides(n) {
-//     let i;
-//     const slides = document.getElementsByClassName("our-testimonials-section9");
-//     const buttons = document.querySelectorAll('.our-testimonials-btn button');
-
-//     if (n > slides.length) { slideIndex = 1 }
-//     if (n < 1) { slideIndex = slides.length }
-//     for (i = 0; i < slides.length; i++) {
-//         slides[i].style.display = "none";
-//     }
-//     for (i = 0; i < buttons.length; i++) {
-//         buttons[i].classList.remove('active-btn');
-//     }
-//     slides[slideIndex - 1].style.display = "block";
-//     buttons[slideIndex - 1].classList.add('active-btn');
-// }
-
-// // Automatic slideshow
-// let slideInterval = setInterval(automaticSlide, 4000); // Change 5000 to desired interval in milliseconds
-
-// function automaticSlide() {
-//     moveCarouseltwo(slideIndex + 1);
-// }
-
-// // Resume automatic slideshow on mouse leave
-// carouselContainer.addEventListener('mouseleave', function () {
-//     slideInterval = setInterval(automaticSlide, 4000); // Change 5000 to desired interval in milliseconds
-// });
-
-// // Clicking on a button to move carousel
-// const carouselButtons = document.querySelectorAll('.our-testimonials-btn button');
-// carouselButtons.forEach((button, index) => {
-//     button.addEventListener('click', function() {
-//         moveCarouseltwo(index + 1);
-//         clearInterval(slideInterval); // Pause automatic slideshow
-//     });
-// });
-
-// // Touch swipe functionality
-// let touchStartX = 0;
-// let touchEndX = 0;
-// const carouselContainer = document.querySelector('.carousel-container');
-
-// carouselContainer.addEventListener('touchstart', function(event) {
-//     touchStartX = event.touches[0].clientX;
-// });
-
-// carouselContainer.addEventListener('touchmove', function(event) {
-//     touchEndX = event.touches[0].clientX;
-// });
-
-// carouselContainer.addEventListener('touchend', function() {
-//     handleSwipe();
-// });
-
-// function handleSwipe() {
-//     const swipeThreshold = 50; // Adjust as needed
-//     const deltaX = touchEndX - touchStartX;
-
-//     if (deltaX > swipeThreshold) {
-//         // Swipe right
-//         moveCarouseltwo(slideIndex - 1);
-//     } else if (deltaX < -swipeThreshold) {
-//         // Swipe left
-//         moveCarouseltwo(slideIndex + 1);
-//     }
-// }
-// ----------------------
-// Our Testimonials Section
-// let currentTestimonialSlide = 0;
-// const testimonialSlides = document.querySelectorAll('.our-testimonials-section9');
-// const testimonialButtons = document.querySelectorAll('.our-testimonials-btn button');
-// const testimonialSlideInterval = 3000; // Interval time in milliseconds (e.g., 5000ms = 5 seconds)
-
-// function showTestimonialSlide(index) {
-//     testimonialSlides.forEach((slide, i) => {
-//         slide.style.display = i === index ? "block" : "none";
-//         testimonialButtons[i].classList.toggle('active-btn', i === index);
-//     });
-// }
-
-// function moveTestimonialCarousel(index) {
-//     currentTestimonialSlide = index;
-//     showTestimonialSlide(currentTestimonialSlide);
-// }
-
-// function nextTestimonialSlide() {
-//     currentTestimonialSlide = (currentTestimonialSlide + 1) % testimonialSlides.length;
-//     showTestimonialSlide(currentTestimonialSlide);
-// }
-
-// let autoTestimonialSlideInterval = setInterval(nextTestimonialSlide, testimonialSlideInterval);
-
-// testimonialButtons.forEach((button, index) => {
-//     button.addEventListener('click', () => {
-//         console.log('Button clicked:', index); // Check if the button click event is triggered
-//         clearInterval(autoTestimonialSlideInterval); // Stop the auto slideshow
-//         moveTestimonialCarousel(index);
-//         autoTestimonialSlideInterval = setInterval(nextTestimonialSlide, testimonialSlideInterval); // Restart the auto slideshow
-//     });
-// });
-
-// // Initialize the first slide as active
-// document.addEventListener('DOMContentLoaded', (event) => {
-//     showTestimonialSlide(currentTestimonialSlide);
-// });
-
-// // Touch swipe functionality for Our Testimonials Section
-// let testimonialTouchStartX = 0;
-// let testimonialTouchEndX = 0;
-
-// function handleTestimonialTouchStart(event) {
-//     testimonialTouchStartX = event.changedTouches[0].screenX;
-// }
-
-// function handleTestimonialTouchMove(event) {
-//     testimonialTouchEndX = event.changedTouches[0].screenX;
-// }
-
-// function handleTestimonialTouchEnd() {
-//     const swipeThreshold = 50; // Adjust as needed
-//     const deltaX = testimonialTouchEndX - testimonialTouchStartX;
-
-//     if (deltaX > swipeThreshold) {
-//         // Swipe right
-//         moveTestimonialCarousel(currentTestimonialSlide - 1);
-//     } else if (deltaX < -swipeThreshold) {
-//         // Swipe left
-//         moveTestimonialCarousel(currentTestimonialSlide + 1);
-//     }
-// }
-
-// testimonialSlides.forEach(slide => {
-//     slide.addEventListener('touchstart', handleTestimonialTouchStart, false);
-//     slide.addEventListener('touchmove', handleTestimonialTouchMove, false);
-//     slide.addEventListener('touchend', handleTestimonialTouchEnd, false);
-// });
 
 
 
