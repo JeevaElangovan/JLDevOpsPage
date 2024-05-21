@@ -1516,7 +1516,7 @@ text-align: left;
 
 }
 
-.our-testimonials-btn button.active-btn {
+.our-testimonials-btn button.active-test-btn {
     background: rgba(44, 160, 104, 1);
     width: 24px;
     height: 8px;
@@ -1525,6 +1525,14 @@ text-align: left;
     opacity: 0px;
  
 
+}
+
+.test-1 {
+  display: none;
+}
+
+.test-1.active-test {
+  display: block;
 }
 
 @media (max-width:425px){
