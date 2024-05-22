@@ -196,10 +196,11 @@ text-align: left;
     }
   }
 
-  @media (max-width:375px){
+  @media (max-width:425px){
     .devops-services-part1 h1{
         
-        font-size: 33px;
+        font-size: 40px;
+        text-align: center;
     }
 
   }
@@ -361,12 +362,17 @@ text-align: left;
     }
 }
 
-@media (max-width: 768px){
+@media(min-width:375px) and (max-width:425px){
+  .consulting-service-responsive{
+    padding-top: 110px !important;
+  }
+ 
+}
 
+@media (max-width: 768px){
     .consulting-responsve-header h1{
         position: relative;
         margin-top: 280px;
-        font-size: xx-large;
     }
 
     .consulting-responsve-header h1::after{
