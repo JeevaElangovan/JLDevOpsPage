@@ -396,29 +396,29 @@ text-align: left;
         overflow: hidden;
         margin-top: 30px;
       }
-      .accordion-item {
+      .dcs-item {
           margin-bottom: 15px; 
         border: none !important;
 
       }
       
-      .accordion-header.active {
+      .dcs-header.active {
         background-color: #2CA068;
         color:white
       }
-      .accordion-header.active span{
+      .dcs-header.active span{
         color: white;
       }
       
-      .accordion-header.active .accordion-header {
+      .dcs-header.active .dcs-header {
         color: white;
       }
       
-      .accordion-header.active .accordion-toggle .arrow {
+      .dcs-header.active .dcs-toggle .arrow {
         border-color: white;
       }
       
-      .accordion-header {
+      .dcs-header {
         display: flex;
         align-items: center;
         background-color: #2CA0681A;
@@ -447,7 +447,7 @@ text-align: left;
         border: solid black;
         border-width: 0 2px 2px 0;
       }
-      .accordion-content {
+      .dcs-content {
         padding: 10px;
         display: none;
         font-size: 14px;
@@ -456,11 +456,11 @@ text-align: left;
 
       }
 
-      .accordion-content p{
+      .dcs-content p{
         margin-top: 20px;
         font-size: 14px;
       }
-      .accordion-toggle {
+      .dcs-toggle {
         background: none;
         border: none;
         cursor: pointer;
@@ -469,7 +469,7 @@ text-align: left;
       }
     
 
-  .accordion-header span{
+  .dcs-header span{
     width: 100%;
     font-size: 14px;
     font-weight: 400;
@@ -491,6 +491,10 @@ text-align: left;
         box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.25);
         
     }
+
+    .dcs-header.active {
+      background-color: #2CA068; /* Active background color */
+  }
 
 }
 
@@ -3152,8 +3156,11 @@ padding-right: 2px;
 }
 .accordion-content {
   padding: 10px;
+}
+.faq-content {
   display: none;
 }
+
 .accordion-toggle {
   background: none;
   border: none;
