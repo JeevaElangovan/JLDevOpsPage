@@ -1,29 +1,64 @@
 
 //  Footer --->
 
-document.addEventListener("DOMContentLoaded", function() {
+// document.addEventListener("DOMContentLoaded", function() {
+//     // Get all footer columns
+//     var footerColumns = document.querySelectorAll('#footer-column');
+  
+//     // Loop through each footer column
+//     footerColumns.forEach(function(column) {
+//         // Find the h3 element
+//         var h3 = column.querySelector('#footer-head');
+  
+//         // Find the ul element
+//         var menu = column.querySelector('#footer-menu');
+  
+//         // Add click event listener to the icon
+//         h3.addEventListener('click', function() {
+//             // Toggle the active class on the menu when the icon is clicked
+//             menu.classList.toggle('active-footer');
+  
+//             // Toggle the icon between chevron-down and chevron-up
+//             h3.querySelector('i').classList.toggle('bi-chevron-down');
+//             h3.querySelector('i').classList.toggle('bi-chevron-up');
+//         });
+//     });
+//   });
+
+document.addEventListener("DOMContentLoaded", function () {
     // Get all footer columns
-    var footerColumns = document.querySelectorAll('#footer-column');
-  
+    var footerColumns = document.querySelectorAll('.footer-column');
+    var currentOpenMenu = null;
+
     // Loop through each footer column
-    footerColumns.forEach(function(column) {
+    footerColumns.forEach(function (column) {
         // Find the h3 element
-        var h3 = column.querySelector('#footer-head');
-  
+        var h3 = column.querySelector('h3');
+
         // Find the ul element
-        var menu = column.querySelector('#footer-menu');
-  
+        var menu = column.querySelector('ul');
+
         // Add click event listener to the icon
-        h3.addEventListener('click', function() {
+        h3.addEventListener('click', function () {
+            // If there's an open menu and it's not the current one, close it
+            if (currentOpenMenu && currentOpenMenu !== menu) {
+                currentOpenMenu.classList.remove('active');
+                currentOpenMenu.previousElementSibling.querySelector('i').classList.add('bi-chevron-down');
+                currentOpenMenu.previousElementSibling.querySelector('i').classList.remove('bi-chevron-up');
+            }
+
             // Toggle the active class on the menu when the icon is clicked
-            menu.classList.toggle('active-footer');
-  
+            menu.classList.toggle('active');
+
             // Toggle the icon between chevron-down and chevron-up
             h3.querySelector('i').classList.toggle('bi-chevron-down');
             h3.querySelector('i').classList.toggle('bi-chevron-up');
+
+            // Update the current open menu
+            currentOpenMenu = menu.classList.contains('active') ? menu : null;
         });
     });
-  });
+});
 
 
 
@@ -77,6 +112,9 @@ document.querySelector('.navbar-toggler').addEventListener('click', function () 
     }
 });
 
+
+
+
 // Section - 2 DevOps Consulting Services ====>
 
 
@@ -111,13 +149,16 @@ document.addEventListener("DOMContentLoaded", function () {
 //  Section - 2 Responsive
 
 // document.addEventListener('DOMContentLoaded', function() {
-//     const accordionHeaders = document.querySelectorAll('.accordion-header');
+//     const accordionHeaders = document.querySelectorAll('.dcs-header');
   
 //     accordionHeaders.forEach(header => {
 //         header.addEventListener('click', function() {
 //             const accordionItem = this.parentElement;
-//             const accordionContent = accordionItem.querySelector('.accordion-content');
-//             const accordionToggle = accordionItem.querySelector('.accordion-toggle').querySelector('.arrow');
+//             const accordionContent = accordionItem.querySelector('.dcs-content');
+//             const accordionToggle = accordionItem.querySelector('.dcs-toggle').querySelector('.arrow');
+
+//             this.classList.toggle('active');
+
   
 //             if (accordionContent.style.display === 'block') {
 //                 accordionContent.style.display = 'none';
@@ -131,7 +172,79 @@ document.addEventListener("DOMContentLoaded", function () {
 //         });
 //     });
 //   });
-  
+
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     const accordionItems = document.querySelectorAll('.dcs-header');
+
+//     accordionItems.forEach(item => {
+//         item.addEventListener('click', function() {
+//             const accordionContent = this.nextElementSibling;
+//             const accordionToggle = this.querySelector('.dcs-toggle').querySelector('.arrow');
+
+//             // Toggle active class on the clicked accordion item
+//             this.classList.toggle('active');
+
+//             // Toggle arrow direction
+//             // if (accordionToggle.classList.contains('down')) {
+//             //     accordionToggle.classList.remove('down');
+//             //     accordionToggle.classList.add('up');
+//             // } else {
+//             //     accordionToggle.classList.remove('up');
+//             //     accordionToggle.classList.add('down');
+//             // }
+
+//             // Toggle content visibility
+//             if (accordionContent.style.display === 'block') {
+//                 accordionContent.style.display = 'none';
+//                 accordionToggle.classList.remove('up');
+//                 accordionToggle.classList.add('down');
+//             } else {
+//                 accordionContent.style.display = 'block';
+//                 accordionToggle.classList.remove('down');
+//                  accordionToggle.classList.add('up');
+//             }
+//         });
+//     });
+// });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const accordionItems = document.querySelectorAll('.dcs-header');
+
+    accordionItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const accordionContent = this.nextElementSibling;
+            const accordionToggle = this.querySelector('.dcs-toggle .arrow');
+
+            // Close all other accordion items
+            accordionItems.forEach(otherItem => {
+                const otherAccordionContent = otherItem.nextElementSibling;
+                const otherAccordionToggle = otherItem.querySelector('.dcs-toggle .arrow');
+                
+                if (otherItem !== item) {
+                    otherAccordionContent.style.display = 'none';
+                    otherAccordionToggle.classList.remove('up');
+                    otherAccordionToggle.classList.add('down');
+                    otherItem.classList.remove('active'); // Remove active class
+                }
+            });
+
+            // Toggle content visibility for the clicked item
+            if (accordionContent.style.display === 'block') {
+                accordionContent.style.display = 'none';
+                accordionToggle.classList.remove('up');
+                accordionToggle.classList.add('down');
+                item.classList.remove('active'); // Remove active class
+            } else {
+                accordionContent.style.display = 'block';
+                accordionToggle.classList.remove('down');
+                accordionToggle.classList.add('up');
+                item.classList.add('active'); // Add active class
+            }
+        });
+    });
+});
+
 
 
 // section - 4
@@ -167,39 +280,39 @@ document.addEventListener("DOMContentLoaded", function () {
 // === Accordion
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    const accordionItems = document.querySelectorAll('.accordion-header');
+// document.addEventListener('DOMContentLoaded', function() {
+//     const accordionItems = document.querySelectorAll('.ibdc-header');
 
-    accordionItems.forEach(item => {
-        item.addEventListener('click', function() {
-            const accordionContent = this.nextElementSibling;
-            const accordionToggle = this.querySelector('.accordion-toggle').querySelector('.arrow');
+//     accordionItems.forEach(item => {
+//         item.addEventListener('click', function() {
+//             const accordionContent = this.nextElementSibling;
+//             const accordionToggle = this.querySelector('.ibdc-toggle').querySelector('.arrow');
 
-            // Toggle active class on the clicked accordion item
-            this.classList.toggle('active');
+//             // Toggle active class on the clicked accordion item
+//             this.classList.toggle('active-ibdc');
 
-            // Toggle arrow direction
-            // if (accordionToggle.classList.contains('down')) {
-            //     accordionToggle.classList.remove('down');
-            //     accordionToggle.classList.add('up');
-            // } else {
-            //     accordionToggle.classList.remove('up');
-            //     accordionToggle.classList.add('down');
-            // }
+//             // Toggle arrow direction
+//             // if (accordionToggle.classList.contains('down')) {
+//             //     accordionToggle.classList.remove('down');
+//             //     accordionToggle.classList.add('up');
+//             // } else {
+//             //     accordionToggle.classList.remove('up');
+//             //     accordionToggle.classList.add('down');
+//             // }
 
-            // Toggle content visibility
-            if (accordionContent.style.display === 'block') {
-                accordionContent.style.display = 'none';
-                accordionToggle.classList.remove('up');
-                accordionToggle.classList.add('down');
-            } else {
-                accordionContent.style.display = 'block';
-                accordionToggle.classList.remove('down');
-                 accordionToggle.classList.add('up');
-            }
-        });
-    });
-});
+//             // Toggle content visibility
+//             if (accordionContent.style.display === 'block') {
+//                 accordionContent.style.display = 'none';
+//                 accordionToggle.classList.remove('up');
+//                 accordionToggle.classList.add('down');
+//             } else {
+//                 accordionContent.style.display = 'block';
+//                 accordionToggle.classList.remove('down');
+//                  accordionToggle.classList.add('up');
+//             }
+//         });
+//     });
+// });
 
 
 //  Section - 7 
@@ -334,46 +447,135 @@ $(document).ready(function() {
 
 // Frequently Asked Questions
 
-document.addEventListener('DOMContentLoaded', function() {
-    const accordionHeaders = document.querySelectorAll('.accordion-header');
+// document.addEventListener('DOMContentLoaded', function() {
+//     const accordionHeaders = document.querySelectorAll('.accordion-header');
   
-    accordionHeaders.forEach(header => {
-        header.addEventListener('click', function() {
-            const accordionItem = this.parentElement;
-            const accordionContent = accordionItem.querySelector('.accordion-content');
-            const accordionToggle = accordionItem.querySelector('.accordion-toggle').querySelector('.arrow');
+//     accordionHeaders.forEach(header => {
+//         header.addEventListener('click', function() {
+//             const accordionItem = this.parentElement;
+//             const accordionContent = accordionItem.querySelector('.accordion-content');
+//             const accordionToggle = accordionItem.querySelector('.accordion-toggle').querySelector('.arrow');
   
-            if (accordionContent.style.display === 'block') {
-                accordionContent.style.display = 'none';
-                accordionToggle.classList.remove('up');
-                accordionToggle.classList.add('down');
-            } else {
-                accordionContent.style.display = 'block';
-                accordionToggle.classList.remove('down');
-                accordionToggle.classList.add('up');
-            }
-        });
-    });
-  });
+//             if (accordionContent.style.display === 'block') {
+//                 accordionContent.style.display = 'none';
+//                 accordionToggle.classList.remove('up');
+//                 accordionToggle.classList.add('down');
+//             } else {
+//                 accordionContent.style.display = 'block';
+//                 accordionToggle.classList.remove('down');
+//                 accordionToggle.classList.add('up');
+//             }
+//         });
+//     });
+//   });
   
-  // script.js
+
+//   FAQ====>
 //   document.addEventListener('DOMContentLoaded', function() {
-//     const accordionItems = document.querySelectorAll('.accordion-header');
+//     const accordionHeaders = document.querySelectorAll('.frequently-asked-questions-header');
   
-//     accordionItems.forEach(item => {
-//         item.addEventListener('click', function() {
-//             // Toggle active class on the clicked accordion item
-//             this.classList.toggle('active');
-            
-//             // Toggle arrow color
-//             const accordionToggle = this.querySelector('.accordion-toggle').querySelector('.arrow');
-//             accordionToggle.classList.toggle('white');
+//     accordionHeaders.forEach(header => {
+//         header.addEventListener('click', function() {
+//             const accordionItem = this.parentElement;
+//             const accordionContent = accordionItem.querySelector('.faq-content');
+//             const accordionToggle = accordionItem.querySelector('.faq-toggle').querySelector('.arrow');
   
-//             // Toggle text color
-//             const accordionHeader = this.querySelector('.accordion-header');
-//             accordionHeader.classList.toggle('white');
+//             if (accordionContent.style.display === 'block') {
+//                 accordionContent.style.display = 'none';
+//                 accordionToggle.classList.remove('up');
+//                 accordionToggle.classList.add('down');
+//             } else {
+//                 accordionContent.style.display = 'block';
+//                 accordionToggle.classList.remove('down');
+//                 accordionToggle.classList.add('up');
+//             }
 //         });
 //     });
 //   });
 
+// document.addEventListener('DOMContentLoaded', function() {
+//     const accordionHeaders = document.querySelectorAll('.frequently-asked-questions-header');
+    
+//     accordionHeaders.forEach(header => {
+//       header.addEventListener('click', function() {
+//         const accordionItem = this.parentElement;
+//         const accordionContent = accordionItem.querySelector('.faq-content');
+//         const accordionToggle = accordionItem.querySelector('.faq-toggle .arrow');
+  
+//         // Close all other accordion items
+//         accordionHeaders.forEach(otherHeader => {
+//           const otherAccordionItem = otherHeader.parentElement;
+//           const otherAccordionContent = otherAccordionItem.querySelector('.faq-content');
+//           const otherAccordionToggle = otherAccordionItem.querySelector('.faq-toggle .arrow');
+          
+//           if (otherHeader !== header) {
+//             otherAccordionContent.classList.remove('show');
+//             otherAccordionToggle.classList.remove('up');
+//             otherAccordionToggle.classList.add('down');
+//           }
+//         });
+  
+//         // Toggle the clicked accordion item
+//         if (accordionContent.classList.contains('show')) {
+//           accordionContent.classList.remove('show');
+//           accordionToggle.classList.remove('up');
+//           accordionToggle.classList.add('down');
+//         } else {
+//           accordionContent.classList.add('show');
+//           accordionToggle.classList.remove('down');
+//           accordionToggle.classList.add('up');
+//         }
+//       });
+//     });
+//   });
+  
+
+document.addEventListener('DOMContentLoaded', function () {
+    const accordionHeaders = document.querySelectorAll('.frequently-asked-questions-header');
+    let currentOpenAccordion = null;
+
+    accordionHeaders.forEach(header => {
+        header.addEventListener('click', function () {
+            const accordionItem = this.parentElement;
+            const accordionContent = accordionItem.querySelector('.faq-content');
+            const accordionToggle = accordionItem.querySelector('.faq-toggle').querySelector('.arrow');
+
+            // If there's an open accordion and it's not the current one, close it
+            if (currentOpenAccordion && currentOpenAccordion !== accordionItem) {
+                const openContent = currentOpenAccordion.querySelector('.faq-content');
+                const openToggle = currentOpenAccordion.querySelector('.faq-toggle .arrow');
+
+                openContent.style.display = 'none';
+                openToggle.classList.remove('up');
+                openToggle.classList.add('down');
+
+                // Remove active class and reset styles for the previously open accordion header
+                currentOpenAccordion.querySelector('.frequently-asked-questions-header').classList.remove('active');
+                openToggle.classList.remove('white');
+                currentOpenAccordion.querySelector('.frequently-asked-questions-header').classList.remove('white');
+            }
+
+            // Toggle the current accordion content and arrow
+            if (accordionContent.style.display === 'block') {
+                accordionContent.style.display = 'none';
+                accordionToggle.classList.remove('up');
+                accordionToggle.classList.add('down');
+                this.classList.remove('active');
+                accordionToggle.classList.remove('white');
+                this.classList.remove('white');
+
+                currentOpenAccordion = null;
+            } else {
+                accordionContent.style.display = 'block';
+                accordionToggle.classList.remove('down');
+                accordionToggle.classList.add('up');
+                this.classList.add('active');
+                accordionToggle.classList.add('white');
+                this.classList.add('white');
+
+                currentOpenAccordion = accordionItem;
+            }
+        });
+    });
+});
 
